@@ -6,11 +6,12 @@ Rails::Initializer.run do |config|
   config.gem "authlogic"
   config.gem "paperclip"
   config.gem "will_paginate"
+  config.gem "thoughtbot-shoulda", :lib => 'shoulda/rails', :source => "http://gems.github.com"
   
   config.time_zone = 'UTC'
 
   config.i18n.load_path += Dir[Rails.root.join(RAILS_ROOT, 'config', 'locales', '*.{rb,yml}')]
-  config.i18n.default_locale = 'pt-BR'
+#  config.i18n.default_locale = 'pt-BR'
 end
 
 SITE_NAME = 'Questions Generator'
