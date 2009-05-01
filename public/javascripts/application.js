@@ -28,7 +28,7 @@ Base.Grid = Class.create({
 Base.NestedAttributesJs = {  
   add : function(e) {  
     element = Event.findElement(e);  
-		object_id = element.up().up().href.replace(/.*#/, '');
+		object_id = element.href.replace(/.*#/, '');
     template = eval(object_id + '_template');  
     $(object_id).insert( { before: Base.NestedAttributesJs.replace_ids(template) } );  
   },  
