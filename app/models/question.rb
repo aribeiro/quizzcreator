@@ -5,7 +5,8 @@ class Question < ActiveRecord::Base
   belongs_to :quizz
   has_many :multiple_choices
 
-  validates_presence_of :description
+  validates_presence_of :description, :question_type, :weight
   validates_inclusion_of :question_type, :in => QUESTION_TYPES
+  validates_inclusion_of :weight, :in => QUESTION_WEIGHT
 
 end
