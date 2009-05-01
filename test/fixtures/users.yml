@@ -1,0 +1,28 @@
+# == Schema Information
+# Schema version: 20090501045628
+#
+# Table name: users
+#
+#  id                :integer         not null, primary key
+#  created_at        :datetime
+#  updated_at        :datetime
+#  login             :string(255)     not null
+#  crypted_password  :string(255)     not null
+#  password_salt     :string(255)     not null
+#  persistence_token :string(255)     not null
+#  login_count       :integer         default(0), not null
+#  last_request_at   :datetime
+#  last_login_at     :datetime
+#  current_login_at  :datetime
+#  last_login_ip     :string(255)
+#  current_login_ip  :string(255)
+#  perishable_token  :string(255)     default(""), not null
+#  email             :string(255)     default(""), not null
+#
+
+ben:
+  login: daviscabral
+  password_salt: <%= salt = User.unique_token %>
+  crypted_password: <%= Authlogic::CryptoProviders::Sha512.encrypt("benrocks" + salt) %>
+  persistence_token: 6cde0674657a8a313ce952df979de2830309aa4c11ca65805dd00bfdc65dbcc2f5e36718660a1d2e68c1a08c276d996763985d2f06fd3d076eb7bc4d97b1e317
+  email: eu@daviscabral.com.br
