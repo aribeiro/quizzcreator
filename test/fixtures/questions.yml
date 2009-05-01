@@ -1,3 +1,17 @@
+# == Schema Information
+# Schema version: 20090501052342
+#
+# Table name: questions
+#
+#  id            :integer         not null, primary key
+#  description   :text
+#  weight        :float
+#  question_type :string(255)
+#  quizz_id      :integer
+#  created_at    :datetime
+#  updated_at    :datetime
+#
+
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:

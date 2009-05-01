@@ -1,3 +1,17 @@
+# == Schema Information
+# Schema version: 20090501052342
+#
+# Table name: questions
+#
+#  id            :integer         not null, primary key
+#  description   :text
+#  weight        :float
+#  question_type :string(255)
+#  quizz_id      :integer
+#  created_at    :datetime
+#  updated_at    :datetime
+#
+
 class Question < ActiveRecord::Base
   QUESTION_TYPES = ["Text", "Multiple choices", "Checkboxes"]
   QUESTION_WEIGHT = [1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5]
