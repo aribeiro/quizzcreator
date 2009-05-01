@@ -1,0 +1,9 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  title: first quizz
+  description: this is the first quizz test
+
+two:
+  title: second quizz
+  description: this is the second quizz test

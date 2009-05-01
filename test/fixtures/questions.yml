@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  description: first question
+  weight: 1.5
+  question_type: Multiple choice
+  quizz: one
+
+two:
+  description: Second question 
+  weight: 1.5
+  question_type: Checkbox
+  quizz: one
