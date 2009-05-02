@@ -1,4 +1,5 @@
 ActionController::Routing::Routes.draw do |map|
+  
   map.root :controller => 'site', :action => 'index'
   
   map.resource :account, :controller => "users"
@@ -6,4 +7,5 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :password_resets
   map.resources :users
   map.resources :quizzs, :controller => "quizzs"
+  map.resources :subscribers
 end

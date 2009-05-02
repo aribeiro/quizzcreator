@@ -12,6 +12,8 @@
 
 class Quizz < ActiveRecord::Base
   has_many :questions
+  has_many :subscriber_quizz
+  has_many :subscriber, :through => :subscriber_quizz
 
   validates_presence_of :title
 
