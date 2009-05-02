@@ -1,0 +1,19 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  user_id: 1
+  title: Msc
+  first_name: Eduardo
+  last_name: Molinari
+  email: edumolinari@yahoo.com.br
+  phone: 351 213 41242
+  birth: 2009-05-01
+
+two:
+  user_id: 1
+  title: Mr
+  first_name: Jose
+  last_name: Manuel
+  email: ed.molinari@hotmail.com
+  phone: 123 1233 1233
+  birth: 2009-05-01
