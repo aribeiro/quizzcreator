@@ -12,23 +12,11 @@
   </p>
 
   <div id="questions">
-    <% content_for :jstemplates do -%>
-      <%= "var question='#{generate_template(f, :questions)}'" %>
-    <% end -%>
-    
     <% f.fields_for :questions do |question_form| %>
-      <%= render :partial => 'question', :locals => { :f => question_form } %>
-      
-      <% content_for :jstemplates do -%>
-        <% @choices_template ||= generate_template(question_form, :multiple_choices) -%>
-        <%= "var choice='#{@choices_template}'" unless @choices_template == 0 %>
-        <% @choices_template = 0 -%>
-      <% end -%>
+      <%= render :partial => 'question' , :locals => { :f => question_form } %>
     <% end %>
-
   </div>
-  <%= link_to 'Add a question', '#question', :class => "add_nested_item", :rel => "questions" %>
-
+  <p><%= link_to 'Add a question', '#question', :class => "add_nested_item", :rel => "question" %></p>
 
   <br class="clear" />
   <p><%= f.submit "Submit" %></p>

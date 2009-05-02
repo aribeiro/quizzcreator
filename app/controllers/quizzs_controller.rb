@@ -7,9 +7,6 @@ class QuizzsController < ApplicationController
 
   def new
     @quizz = Quizz.new
-    @quizz.questions.build
-    @quizz.questions.each{|q| q.multiple_choices.build}
-
   end
 
   def create
