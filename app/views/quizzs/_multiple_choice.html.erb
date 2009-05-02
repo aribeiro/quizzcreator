@@ -1,0 +1,23 @@
+<div class="choice">
+  <div style="float:left;padding:10px">   
+  <p>
+    <%= f.label :answer %>
+    <%= f.text_field :answer %>
+  </p>  
+  </div>
+  <div style="float:left;padding:10px">   
+  <p>
+    <%= f.label :is_correct %>
+    <%= f.select :is_answer, [false,true] %>
+  </p>  
+  </div>
+    
+  <div style="float:left;padding:10px">   
+      <!-- For existing records we add a checkbox to be able to delete records. -->
+      <%= f.check_box :_delete %>
+      <%= f.label :_delete, "Remove" %>
+  </p>
+  </div>
+</div>
+<br class="clear" />
+

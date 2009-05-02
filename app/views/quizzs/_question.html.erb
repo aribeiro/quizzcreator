@@ -1,0 +1,30 @@
+<div class="question">
+  <div style="float:left;padding:10px">   
+    <p><%= f.label :question %><br />
+    <%= f.text_area :description, :size => "50x2" %></p>
+  </div>
+  <div style="float:left;padding:10px">   
+    <p><%= f.label :weight %><br />
+    <%= f.select :weight, Question::QUESTION_WEIGHT.map{|t| t} %></p>
+  </div>
+  <div style="float:left;padding:10px">   
+    <p><%= f.label :question_type %><br />
+      <%= f.select :question_type, Question::QUESTION_TYPES.map { |t| [t.humanize, t] }, :onchange => "create_multiple_choice(this)" %>
+    </p>
+  </div>
+  <div style="float:left;padding:10px">   
+    <p>
+      <%# f.hidden_field(:_delete)  unless f.object.new_record? %>
+      <%# link_to("remove", "#question", :class => 'remove') %>
+      <%= remove_link_unless_new_record(f) %>
+    </p>
+  </div>
+
+  <br class="clear" />
+  <div id="choices">
+    <% f.fields_for :multiple_choices do |choice_form| %>
+      <%= render :partial => 'multiple_choice', :locals => { :f => choice_form } %>
+    <% end %>
+  </div>
+</div>
+

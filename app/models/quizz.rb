@@ -14,4 +14,7 @@ class Quizz < ActiveRecord::Base
   has_many :questions
 
   validates_presence_of :title
+
+  accepts_nested_attributes_for :questions, :allow_destroy => true,
+                                :reject_if => proc { |question| question['description'].blank? }
 end

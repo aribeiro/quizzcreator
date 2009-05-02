@@ -8,6 +8,9 @@
       <%= yield(:javascript) %>  
     <% end -%>    
     <%= yield(:head) %>
+    <% javascript_tag do %>
+      <%= yield(:jstemplates) %>
+    <% end -%>
   </head>
   <body>
     <div id="container">

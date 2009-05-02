@@ -1,0 +1,35 @@
+<% javascript :defaults, 'delegate' %>
+<% form_for @quizz do |f| -%>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.label :description %><br />
+    <%= f.text_area :description, :size => "100x3" %>
+  </p>
+
+  <div id="questions">
+    <% content_for :jstemplates do -%>
+      <%= "var question='#{generate_template(f, :questions)}'" %>
+    <% end -%>
+    
+    <% f.fields_for :questions do |question_form| %>
+      <%= render :partial => 'question', :locals => { :f => question_form } %>
+      
+      <% content_for :jstemplates do -%>
+        <% @choices_template ||= generate_template(question_form, :multiple_choices) -%>
+        <%= "var choice='#{@choices_template}'" unless @choices_template == 0 %>
+        <% @choices_template = 0 -%>
+      <% end -%>
+    <% end %>
+
+  </div>
+  <%= link_to 'Add a question', '#question', :class => "add_nested_item", :rel => "questions" %>
+
+
+  <br class="clear" />
+  <p><%= f.submit "Submit" %></p>
+<% end -%>

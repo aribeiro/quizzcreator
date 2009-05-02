@@ -5,5 +5,5 @@ ActionController::Routing::Routes.draw do |map|
   map.resource :user_session    
   map.resources :password_resets
   map.resources :users
-  map.resources :quizz, :controller => "quizz"
+  map.resources :quizzs, :controller => "quizzs"
 end

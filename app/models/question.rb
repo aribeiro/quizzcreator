@@ -13,7 +13,7 @@
 #
 
 class Question < ActiveRecord::Base
-  QUESTION_TYPES = ["Text", "Multiple choices", "Checkboxes"]
+  QUESTION_TYPES = ["TEXT", "MULTIPLE_CHOICES", "CHECKBOXES"]
   QUESTION_WEIGHT = [1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5]
   
   belongs_to :quizz
@@ -22,5 +22,8 @@ class Question < ActiveRecord::Base
   validates_presence_of :description, :question_type, :weight
   validates_inclusion_of :question_type, :in => QUESTION_TYPES
   validates_inclusion_of :weight, :in => QUESTION_WEIGHT
+
+  accepts_nested_attributes_for :multiple_choices, :allow_destroy => true,
+                                :reject_if => proc { |choice| choice['answer'].blank? }
 
 end
