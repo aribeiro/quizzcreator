@@ -78,3 +78,11 @@ a {
   font-size: 12px;
   list-style: disc;
 }
+.question, .choice {border-left:10px solid #eee; padding-left:10px;}
+.choice {border-color:#999; margin:2em 0;}
+
+.clear{
+  clear:both
+}
+
+
