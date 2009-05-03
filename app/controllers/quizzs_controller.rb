@@ -1,6 +1,6 @@
 class QuizzsController < ApplicationController
   before_filter :load_constants, :except => [:index, :create, :update]
-  
+ 
   def index
     @quizzs = Quizz.all
   end
@@ -17,6 +17,10 @@ class QuizzsController < ApplicationController
     else
       render :action => 'new'
     end
+  end
+
+  def show
+   redirect_to quizzs_path 
   end
 
   def edit

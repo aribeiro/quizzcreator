@@ -1,7 +1,3 @@
-
-    <% content_for :jstemplates do -%>
-      <%= "var question='#{generate_template(f, :questions)}'" %>
-    <% end -%>
 <div class="question">
   <div class="float_label" >   
     <p><%= f.label :question %><br />
@@ -15,18 +11,23 @@
   
   <div class="float_label" >   
     <p><%= f.label :type %><br />
-      <%= f.select :question_type, Question::QUESTION_TYPES.map { |t| [t.humanize, t] }, :onchange => "create_multiple_choice(this)" %></p>
+      <%= f.select :question_type, Question::QUESTION_TYPES.map { |t| [t.humanize, t] } %></p>
   </div>
   
   <div class="float_label" >   
-    <p><%= remove_link_unless_new_record(f) %></p>
+    <p><%= remove_link_unless_new_record(f) unless f.object.new_record? %></p>
   </div>
   
   <br class="clear" />
   
   <div id="choices">
     <% f.fields_for :multiple_choices do |choice_form| %>
+      <% content_for :jstemplates do -%>
+        <%= "var choice='#{generate_template(f, :choices)}'" %>
+      <% end -%>
+      
       <%= render :partial => 'multiple_choice', :locals => { :f => choice_form } %>
     <% end %>
   </div>
 </div>
+
