@@ -1,7 +1,10 @@
 class SubscribersController < ApplicationController
+before_filter :require_user
+
   # GET /subscribers
   # GET /subscribers.xml
   def index
+    @user = @current_user
     @subscribers = Subscriber.all
 
     respond_to do |format|
@@ -9,16 +12,7 @@ class SubscribersController < ApplicationController
       format.xml  { render :xml => @subscribers }
     end
   end
-
-  def author_subscriber
-    @subscribers = Subscriber.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @subscribers }
-    end
-  end
-
+  
   # GET /subscribers/1
   # GET /subscribers/1.xml
   def show
@@ -50,15 +44,19 @@ class SubscribersController < ApplicationController
   # POST /subscribers.xml
   def create
     @subscriber = Subscriber.new(params[:subscriber])
-
+    
     respond_to do |format|
       if @subscriber.save
-        flash[:notice] = 'Subscriber was successfully created.'
-        format.html { redirect_to(@subscriber) }
-        format.xml  { render :xml => @subscriber, :status => :created, :location => @subscriber }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @subscriber.errors, :status => :unprocessable_entity }
+        @user_subscriber= @subscriber.user_subscribers.new
+        @user_subscriber.user_id = @current_user.id
+        if @user_subscriber.save
+           flash[:notice] = 'Subscriber was successfully created.'
+            format.html { redirect_to(@subscriber) }
+            format.xml  { render :xml => @subscriber, :status => :created, :location => @subscriber }
+         else
+            format.html { render :action => "new" }
+            format.xml  { render :xml => @subscriber.errors, :status => :unprocessable_entity }
+       end
       end
     end
   end
