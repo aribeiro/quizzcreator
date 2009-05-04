@@ -1,12 +1,17 @@
 <h1>Subscribers</h1>
 
+<h2> Author:     <%= @user.login %></h2>
+
+
 <table>
   <tr>
   </tr>
 
 <% @subscribers.each do |subscriber| %>
   <tr>
-    <td><%= link_to 'Show', subscriber %></td>
+    <td><%= subscriber.title %> <%=subscriber.last_name %>, <%=subscriber.first_name %></td>
+    <td><%= subscriber.email %></td>
+    <td><%= subscriber.phone %></td>
     <td><%= link_to 'Edit', edit_subscriber_path(subscriber) %></td>
     <td><%= link_to 'Destroy', subscriber, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>

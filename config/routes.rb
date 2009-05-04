@@ -8,4 +8,5 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :users
   map.resources :quizzs, :controller => "quizzs"
   map.resources :subscribers
+  map.resources :users, :has_many => :subscribers
 end
