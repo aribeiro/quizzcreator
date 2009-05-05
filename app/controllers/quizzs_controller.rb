@@ -36,7 +36,7 @@ class QuizzsController < ApplicationController
     @quizz.attributes = params[:quizz]
     if @quizz.save
       flash[:notice] = "Successfully updated quizz."
-      redirect_to new_quizz_questions_path(@quizz)
+      redirect_to quizzs_path
     else
       render :action => 'edit'
     end
@@ -46,7 +46,7 @@ class QuizzsController < ApplicationController
     @quizz = Quizz.find(params[:id])
     @quizz.destroy
     flash[:notice] = "Successfully destroyed quizz."
-    redirect_to quizzs_url
+    redirect_to quizzs_path
   end
 
 

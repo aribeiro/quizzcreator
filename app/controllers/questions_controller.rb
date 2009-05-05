@@ -37,9 +37,10 @@ class QuestionsController < ApplicationController
   end
 
   def destroy
+    @quizz = Quizz.find(params[:quizz_id])
     @question = Question.find(params[:id])
     @question.destroy
     flash[:notice] = "Successfully destroyed question."
-    redirect_to questions_url
+    redirect_to new_quizz_question_path(@quizz)
   end
 end
