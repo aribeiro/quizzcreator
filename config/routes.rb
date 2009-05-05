@@ -7,7 +7,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :password_resets
   map.resources :users
   
-  map.resources :quizzs, :controller => "quizzs", :has_many => :questions, :shallow => true
+  map.resources :quizzs, :controller => "quizzs", :has_many => :questions 
   
   map.resources :subscribers
   map.resources :users, :has_many => :subscribers
