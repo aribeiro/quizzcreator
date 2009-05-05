@@ -1,0 +1,29 @@
+<% javascript :defaults, 'delegate' %>
+<h1><%= @quizz.title %></h1>
+<p><strong><%= @quizz.description %></strong></p>
+
+<hr />
+
+<% if @quizz.questions.size > 0 %>
+<div id="questions">
+  <ol>
+  <% @quizz.questions.each_with_index do |question, i| %>
+    <li><%= question.description %>
+      <% if question.multiple_choices.size > 0 %>
+        <div>
+        <ul>
+        <% question.multiple_choices.each do |choice| %>
+          <li><input type="checkbox" disabled="disabled" <%= "checked='checked'" if choice.is_answer %> ><%= choice.answer %></li>
+        <% end %>
+        </ul>
+        </div>
+      <% else %>
+        <div><textarea disabled="disabled" style="width:400px;height:40px"></textarea></div>
+      <% end %>
+      <br style="clear" />
+    </li>
+  <% end %>
+  </ol>
+</div>
+<hr />
+<% end %>

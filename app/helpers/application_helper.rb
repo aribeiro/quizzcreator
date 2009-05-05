@@ -28,7 +28,7 @@ module ApplicationHelper
     unless form_builder.object.new_record?  
       form_builder.check_box(:_delete) + form_builder.label(:_delete, 'Delete')  
     else  
-      link_to_function('Remover', "$(this).up('.#{form_builder.object.class.name.underscore}').remove();", :id => "test_#{rand(100)}")  
+      link_to_function('Remove', "$(this).up('.#{form_builder.object.class.name.underscore}').remove();", :id => "test_#{rand(100)}")  
     end  
   end  
 end

@@ -1,17 +1,19 @@
-<h1>Quizz List</h1>
+<h1>Quizzes List</h1>
 
-
-<table>
-  <tr>
-    <th>Title</th>
-    <th colspan="3"> </th>
-  </tr> 
+<dt>
   <% for quizz in @quizzs %>
-  <tr>
-    <td><%= quizz.title %></td>
-    <td><%= link_to 'Show', quizz_path(quizz) %></td>
-    <td><%= link_to 'Edit', edit_quizz_path(quizz) %></td>
-  </tr>
+    <dl>
+      <strong><%= quizz.title %></strong>
+    [<%= link_to 'Show', quizz_path(quizz) %>]
+    [<%= link_to 'Edit', edit_quizz_path(quizz) %>]
+    [<%= link_to 'Delete', quizz, :method => "delete", :confirm => "Are you sure?" %>]
+    [<%= link_to 'Send' %>]
+  </dl>
+  <dd>
+    [<%= link_to 'Manage questions', new_quizz_question_path(quizz) %>]
+    [<%= link_to 'Manage subscribers' %>]
+  </dd>
   <% end %>
-</table>
+</dt>
+<br style="clear" />
 <%= link_to 'New Quizz', new_quizz_path %>

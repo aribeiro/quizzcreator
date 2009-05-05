@@ -7,17 +7,21 @@ class QuizzsController < ApplicationController
 
   def new
     @quizz = Quizz.new
+    @question = @quizz.questions.build
+    2.times { @question.multiple_choices.build }
   end
 
   def create
     @quizz = Quizz.new(params[:quizz])
     if @quizz.save
       flash[:notice] = "Successfully created quizz."
-      redirect_to @quizz
+      #redirect_to @quizz
+      redirect_to new_quizz_question_path(@quizz)
     else
-      render :action => 'new'
+      render :action => "new"
     end
   end
+
 
   def show
    redirect_to quizzs_path 
@@ -32,7 +36,7 @@ class QuizzsController < ApplicationController
     @quizz.attributes = params[:quizz]
     if @quizz.save
       flash[:notice] = "Successfully updated quizz."
-      redirect_to @quizz
+      redirect_to quizzs_path
     else
       render :action => 'edit'
     end
@@ -42,9 +46,8 @@ class QuizzsController < ApplicationController
     @quizz = Quizz.find(params[:id])
     @quizz.destroy
     flash[:notice] = "Successfully destroyed quizz."
-    redirect_to quizzs_url
+    redirect_to quizzs_path
   end
-
 
 
   private
