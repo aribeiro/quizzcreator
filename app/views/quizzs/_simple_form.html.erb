@@ -1,0 +1,14 @@
+<% form_for @quizz do |f| -%>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.label :description %><br />
+    <%= f.text_area :description, :size => "100x3" %>
+  </p>
+
+  <br class="clear" />
+  <p><%= f.submit "Submit" %></p>
+<% end -%>

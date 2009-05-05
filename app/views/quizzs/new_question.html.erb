@@ -1,0 +1,39 @@
+<% form_for :question, :url => { :controller => 'quizzs', :action => 'create_question' } do |f| -%>
+<div class="question">
+  <div class="float_label" >   
+    <p><%= f.label :question %><br />
+    <%= f.text_area :description, :size => "50x2" %></p>
+  </div>
+  
+  <div class="float_label" >   
+    <p><%= f.label :weight %><br />
+    <%= f.select :weight, Question::QUESTION_WEIGHT.map{|t| t} %></p>
+  </div>
+  
+  <div class="float_label" >   
+    <p><%= f.label :type %><br />
+    <%= f.select :question_type, Question::QUESTION_TYPES.map { |t| [t.humanize, t] },{}, {:onchange => "show_question_type(this)" } %></p>
+  </div>
+  <div class="float_label" >   
+    <p><%= remove_link_unless_new_record(f) unless f.object.new_record? %></p>
+  </div>
+  
+  <br class="clear" />
+  
+  <div id="text" style="display:none">
+    <textarea disabled="disabled"></textarea>
+  </div>
+
+  <% div_choices = "#{f.object_name.gsub(/[[:punct:]]/,"_")}_choices" %>
+  <div id="<%= div_choices %>" style="display:block">
+    <% f.fields_for :multiple_choices do |choice_form| %>
+      <% content_for :jstemplates do -%>
+        <%= "var choice='#{generate_template(f, :multiple_choices)}'" %>
+      <% end -%>
+      <%= render :partial => 'multiple_choice', :locals => { :f => choice_form } %>
+    <% end %>
+  </div>
+  <p id="add_choice" style="display:block"><%= link_to 'Add a choice', '#choice', :class => "add_nested_item", :rel => div_choices %></p>
+</div>
+<%= submit_tag "Submit" %>
+<% end %>
