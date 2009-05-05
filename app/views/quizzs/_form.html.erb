@@ -15,7 +15,6 @@
   </p>
 
   <div id="questions">
-    <% @quizz.questions.build unless @quizz.questions.size > 0 %>
     <% f.fields_for :questions do |question_form| %>
       <%= render :partial => 'question' , :locals => { :f => question_form } %>
     <% end %>

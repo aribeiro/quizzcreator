@@ -13,7 +13,7 @@
 #
 
 class Question < ActiveRecord::Base
-  QUESTION_TYPES = ["TEXT", "MULTIPLE_CHOICES", "CHECKBOXES"]
+  QUESTION_TYPES = ["TEXT", "MULTIPLE_CHOICES"]
   QUESTION_WEIGHT = [1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5]
   
   belongs_to :quizz
