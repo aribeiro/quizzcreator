@@ -12,6 +12,8 @@ module NavigationHelpers
       '/'
     when /the list of quizzes/
       quizzs_path
+    when /the new quizz questions/
+      new_quizz_question_path(@quizz)
     
     # Add more mappings here.
     # Here is a more fancy example:

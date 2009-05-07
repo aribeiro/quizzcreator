@@ -16,7 +16,6 @@ Feature:	Manage Quizzes
 		And I fill in "Title" with "First Quizz"
 		And I fill in "Description" with "It is the first quizz ..."
 		And I press "Submit"
-		Then I should go to the new quizz questions
 		Then I should see "Successfully created quizz."
 		And I should see "First Quizz"
 		And I should see "It is the first quizz ..."
