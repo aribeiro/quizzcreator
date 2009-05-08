@@ -10,9 +10,16 @@ module NavigationHelpers
     
     when /the homepage/
       '/'
+    
     when /the list of quizzes/
       quizzs_path
-    when /the new quizz questions/
+    
+    when /the new questions/
+      @quizz = Quizz.first
+      new_quizz_question_path(@quizz)
+
+    when /the new quizz question/
+      @quizz = Quizz.first
       new_quizz_question_path(@quizz)
     
     # Add more mappings here.
