@@ -23,14 +23,16 @@ class QuestionsController < ApplicationController
   def edit
     @quizz = Quizz.find(params[:quizz_id])
     @question = Question.find(params[:id])
+    @question.multiple_choices.build if @question.multiple_choices.empty?
   end
 
   def update
-    @question = Question.find(params[:id])
+    @quizz = Quizz.find(params[:quizz_id])
+    @question = @quizz.questions.find(params[:id])
     @question.attributes = params[:question]
     if @question.save
       flash[:notice] = "Successfully updated question."
-      redirect_to @question
+      redirect_to new_quizz_question_path(@quizz)
     else
       render :action => 'edit'
     end

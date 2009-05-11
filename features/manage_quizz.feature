@@ -20,5 +20,5 @@ Feature:	Manage Quizzes
 		And I should see "First Quizz"
 		And I should see "It is the first quizz ..."
 		And I should have 1 quizz
-
 	
+
