@@ -23,5 +23,7 @@ Then /^I create a question for this quizz$/ do
 end
 
 Then /^I'm on the Edit question$/ do
+  visit new_quizz_question_path(@quizz) 
+  raise response.inspect  
 end
 

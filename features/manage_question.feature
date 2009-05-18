@@ -23,6 +23,6 @@ Feature:	Manage Questions
 		Given I have a quizz
 		Then I create a question for this quizz
 		And I'm on the Edit question
-		And the "question[weight]" field should contain "1.5"
 		And the "question[description]" field should contain "Test ?"
+		And the "question[weight]" field should contain "1.5"
 		And the "question[question_type]" field should contain "TEXT" 
